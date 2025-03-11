@@ -49,7 +49,7 @@ jobs:
       
 
     - name: List files for debugging
-      run: ls -R /home/runner/work/autdemo/autdemo/testoutput
+      run: ls -R /home/runner/work/autdemo/autdemo/test-output
 
 
     - name: Upload test-output
