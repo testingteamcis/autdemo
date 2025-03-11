@@ -34,6 +34,9 @@ jobs:
     - name: Create testoutput directory
       run: mkdir -p /home/runner/work/autdemo/autdemo/target
 
+    - name: install maven
+      run: mvn clean install 
+
     
     - name: print current working directory
       run: pwd
@@ -41,7 +44,11 @@ jobs:
 
 
     - name: Run tests
-      run: mvn clean test 
+      run: mvn test 
+
+    - name: Wait for 10 seconds
+      run: sleep 49
+
 
     - name: List files for debugging
       run: ls -R /home/runner/work/autdemo/autdemo/target
