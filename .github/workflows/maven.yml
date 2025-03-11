@@ -29,6 +29,10 @@ jobs:
         cache: maven
 
     - name: Create target directory
+      run: mkdir -p /home/runner/work/autdemo/autdemo/test-output
+    
+
+    - name: Create target directory
       run: mkdir -p /home/runner/work/autdemo/autdemo/target
     
     - name: Build with Maven
@@ -42,6 +46,12 @@ jobs:
 
     - name: List files for debugging
       run: ls -R /home/runner/work/autdemo/autdemo/target
+
+    - name: Upload test-output
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-output
+        path: /home/runner/work/autdemo/autdemo/test-output
 
 
 
