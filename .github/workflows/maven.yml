@@ -28,11 +28,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Create testoutput directory
-      run: mkdir -p /home/runner/work/autdemo/autdemo/test-output
-
-    - name: Set permissions for test-output directory
-      run: chmod -R 777 /home/runner/work/autdemo/autdemo/test-output
 
 
     
