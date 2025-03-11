@@ -35,28 +35,14 @@ jobs:
       run: mkdir -p /home/runner/work/autdemo/autdemo/target
 
     - name: install maven
-      run: mvn clean install 
-
-    
+      run: mvn clean test
+      
     - name: print current working directory
       run: pwd
-
-
-
-    - name: Run tests
-      run: mvn test 
-
-    - name: Wait for 10 seconds
-      run: sleep 15
-
 
     - name: List files for debugging
       run: ls -R /home/runner/work/autdemo/autdemo/target
       
-
-    - name: List target/test-output contents
-      run: ls -R /home/runner/work/autdemo/autdemo/test-output
-
     - name: Check for errors
       run: cat /home/runner/work/autdemo/autdemo/target/surefire-reports/*.txt
 
@@ -66,6 +52,13 @@ jobs:
       with:
         name: test-output
         path: /home/runner/work/autdemo/autdemo/target/cucumber.html
+
+    - name: Upload test-output
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-output
+        path: /home/runner/work/autdemo/autdemo/target/SparkReport/Spark.html
+
 
 
 
