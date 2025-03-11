@@ -51,7 +51,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output
-        path: /home/runner/work/autdemo/autdemo/test-output
+        path: /home/runner/work/autdemo/autdemo/target/cucumber.html
+
 
 
 
