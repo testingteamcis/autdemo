@@ -30,9 +30,7 @@ jobs:
 
     
 
-    - name: Create target directory
-      run: mkdir -p /home/runner/work/autdemo/autdemo/target
-
+    
     - name: Create testoutput directory
       run: mkdir -p /home/runner/work/autdemo/autdemo/target/test-output
 
