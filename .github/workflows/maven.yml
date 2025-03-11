@@ -29,7 +29,7 @@ jobs:
         cache: maven
 
     - name: Create target directory
-      run: mkdir -p /home/runner/work/autdemo/autdemo/test-output
+      run: mkdir -p /home/runner/work/autdemo/autdemo/target
     
     - name: Build with Maven
       run: mvn clean install
@@ -41,7 +41,7 @@ jobs:
       run: mvn test -X
 
     - name: List files for debugging
-      run: ls -R /home/runner/work/autdemo/autdemo/test-output
+      run: ls -R /home/runner/work/autdemo/autdemo/target
 
 
 
