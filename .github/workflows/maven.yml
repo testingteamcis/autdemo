@@ -36,6 +36,10 @@ jobs:
     - name: Run tests
       run: mvn test -X
 
+    - name: List files for debugging
+      run: ls -R /test-output
+
+
 
 
    
