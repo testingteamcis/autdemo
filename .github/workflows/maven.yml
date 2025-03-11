@@ -28,11 +28,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    
+    - name: Create testoutput directory
+      run: mkdir -p /home/runner/work/autdemo/autdemo/test-output
+
 
     
     - name: Create testoutput directory
-      run: mkdir -p /home/runner/work/autdemo/autdemo/target/test-output
+      run: mkdir -p /home/runner/work/autdemo/autdemo/target
 
     
     - name: Build with Maven
@@ -49,7 +51,7 @@ jobs:
       
 
     - name: List target/test-output contents
-      run: ls -R /home/runner/work/autdemo/autdemo/target/test-output
+      run: ls -R /home/runner/work/autdemo/autdemo/test-output
 
     - name: Upload test-output
       uses: actions/upload-artifact@v4
