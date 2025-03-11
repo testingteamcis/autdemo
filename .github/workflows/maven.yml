@@ -46,6 +46,11 @@ jobs:
 
     - name: List files for debugging
       run: ls -R /home/runner/work/autdemo/autdemo/target
+      
+
+    - name: List files for debugging
+      run: ls -R /home/runner/work/autdemo/autdemo/testoutput
+
 
     - name: Upload test-output
       uses: actions/upload-artifact@v4
