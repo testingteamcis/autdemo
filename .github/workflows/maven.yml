@@ -50,7 +50,7 @@ jobs:
           --title "Automation Report - $(date '+%Y-%m-%d')" \
           --body " A new Artifact has been generated!
           - **Genearted At:**$(date)
-          - **Download:** Click Here" \
+          - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
           --label "test-output")
           
 
