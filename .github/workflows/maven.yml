@@ -44,6 +44,13 @@ jobs:
         name: test-output
         path: ./target/SparkReport/Spark.html
 
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        GH_TOKEN:  ${{ secrets.PAT }}
+        publish_dir: ./target/SparkReport
+
+
     - name: Create GitHub issue with Labels
       run: |
          Create_issue=$(gh issue create \
