@@ -79,6 +79,8 @@ jobs:
   deploy-pages:
       needs: deploy-to-pages
       runs-on: ubuntu-latest
+      environment:
+        name: github-pages
       permissions:
         pages: write
         id-token: write
