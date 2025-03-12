@@ -27,10 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
-
-
-    
+ 
     - name: Create testoutput directory
       run: mkdir -p /home/runner/work/autdemo/autdemo/target
 
@@ -40,14 +37,7 @@ jobs:
     - name: print current working directory
       run: pwd
 
-    - name: List files for debugging
-      run: ls -R /home/runner/work/autdemo/autdemo/target
-      
-    - name: Check for errors
-      run: cat /home/runner/work/autdemo/autdemo/target/surefire-reports/*.txt
-
-
-    
+       
     - name: Upload test-output
       uses: actions/upload-artifact@v4
       with:
