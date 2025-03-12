@@ -47,10 +47,10 @@ jobs:
     - name: Create GitHub issue with Labels
       run: |
          Create_issue=$(gh issue create \
-          --title "Automation Report has been generated" \
+          --title "Automation Report - $(date '+%Y-%m-%d')" \
           --body " A new Artifact has been generated!
           - **Genearted At:**$(date)
-          - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
+          - **Download:** Click Here" \
           --label "test-output")
           
 
