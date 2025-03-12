@@ -7,134 +7,71 @@
 # documentation.
 
 name: Java CI with Maven
-
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
-
+    branches:
+      - master
 jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
- 
-    - name: Create testoutput directory
-      run: mkdir -p /home/runner/work/autdemo/autdemo/target
-
-    - name: install maven
-      run: mvn clean test
-             
-    - name: Upload HTML report as Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-output
-        path: ./target/SparkReport
-
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: temurin
+          cache: maven
+      - name: Create testoutput directory
+        run: mkdir -p /home/runner/work/autdemo/autdemo/target
+      - name: install maven
+        run: mvn clean test
+      - name: Upload HTML report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output
+          path: ./target/SparkReport
   deploy-to-pages:
     needs: run-tests
     runs-on: ubuntu-latest
     permissions:
-     pages: write
-     id-token: write
+      pages: write
+      id-token: write
     steps:
       - name: Downlod HTML Report
         uses: actions/download-artifact@v4
         with:
           name: selenium-report
-          path:  ./target/SparkReport
-          
+          path: ./target/SparkReport
       - name: Deploy Reports to Github pages
         uses: action/upload-pages-artifact@v3
         with:
-         path: ./target/SparkReport
-
+          path: ./target/SparkReport
   publish-report-link:
-    needs:  deploy-to-pages
+    needs: deploy-to-pages
     runs-on: ubuntu-latest
     permissions:
-      issues:  write
+      issues: write
     steps:
       - name: Create GitHub issue with Labels
-        run: |
-         Create_issue=$(gh issue create \
-          --title "Automation Report - $(date '+%Y-%m-%d')" \
-          --body " A new Artifact has been generated!
-          - **Genearted At:**$(date)
-          - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
-          --label "test-output")
+        run: >
+          Create_issue=$(gh issue create \
+           --title "Automation Report - $(date '+%Y-%m-%d')" \
+           --body " A new Artifact has been generated!
+           - **Genearted At:**$(date)
+           - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
+           --label "test-output")
         env:
-            GH_TOKEN:  ${{ secrets.PAT }}
-
+          GH_TOKEN: ${{ secrets.PAT }}
     deploy-pages:
-      needs:  deploy-to-pages
+      needs: deploy-to-pages
       runs-on: ubuntu-latest
       permissions:
-        pages:  write
-        id-token:  write
+        pages: write
+        id-token: write
       steps:
-        -  name: Deploy GitHub Pages
-           uses: actions/deploy-pags@v4
-    
-
-          
-
-    
-    
-        
-
-          
-    
-    
-  
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
-        publish_dir: ./target/SparkReport
-
-  
-
-
-    - name: Create GitHub issue with Labels
-      run: |
-         Create_issue=$(gh issue create \
-          --title "Automation Report - $(date '+%Y-%m-%d')" \
-          --body " A new Artifact has been generated!
-          - **Genearted At:**$(date)
-          - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
-          --label "test-output")
-          
-
-         echo "Create_issue=$Create_issue" >> $GITHUB_ENV
-      env:
-       GH_TOKEN:  ${{ secrets.PAT }}
-
-    - name: Comment on Issue
-      run: |
-        gh issue comment "$Create_issue" \
-         --body " this issue latest report"
-      env:
-       GH_TOKEN:  ${{ secrets.PAT }}
-       
-    
-      
-         
-      
-    
-        
-  
-
-
-
-
-
-   
+        - name: Deploy GitHub Pages
+          uses: actions/deploy-pags@v4
