@@ -72,7 +72,7 @@ jobs:
            --title "Automation Report - $(date '+%Y-%m-%d')" \
            --body " A new Artifact has been generated!
            - **Genearted At:**$(date)
-           - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/index.html" \
+           - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
            --label "test-output")
         env:
           GH_TOKEN: ${{ secrets.PAT }}
@@ -83,5 +83,7 @@ jobs:
         pages: write
         id-token: write
       steps:
+        - uses: actions/checkout@v4
+
         - name: Deploy GitHub Pages
           uses: actions/deploy-pages@v4
