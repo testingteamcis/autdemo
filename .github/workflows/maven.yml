@@ -50,7 +50,7 @@ jobs:
           name: selenium-report
           path: ./target/SparkReport
       - name: Deploy Reports to Github pages
-        uses: action/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./target/SparkReport
   publish-report-link:
@@ -77,4 +77,4 @@ jobs:
         id-token: write
       steps:
         - name: Deploy GitHub Pages
-          uses: actions/deploy-pags@v4
+          uses: actions/deploy-pages@v4
