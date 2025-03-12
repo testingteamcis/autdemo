@@ -15,10 +15,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  run-tests:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -33,22 +31,77 @@ jobs:
 
     - name: install maven
       run: mvn clean test
-      
-    - name: print current working directory
-      run: pwd
-
-       
-    - name: Upload test-output
+             
+    - name: Upload HTML report as Artifact
       uses: actions/upload-artifact@v4
       with:
         name: test-output
-        path: ./target/SparkReport/Spark.html
+        path: ./target/SparkReport
+
+  deploy-to-pages:
+    needs: run-tests
+    runs-on: ubuntu-latest
+    permissions:
+     pages: write
+     id-token: write
+    steps:
+      - name: Downlod HTML Report
+        uses: actions/download-artifact@v4
+        with:
+          name: selenium-report
+          path:  ./target/SparkReport
+          
+      - name: Deploy Reports to Github pages
+        uses: action/upload-pages-artifact@v3
+        with:
+         path: ./target/SparkReport
+
+  publish-report-link:
+    needs:  deploy-to-pages
+    runs-on: ubuntu-latest
+    permissions:
+      issues:  write
+    steps:
+      - name: Create GitHub issue with Labels
+        run: |
+         Create_issue=$(gh issue create \
+          --title "Automation Report - $(date '+%Y-%m-%d')" \
+          --body " A new Artifact has been generated!
+          - **Genearted At:**$(date)
+          - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
+          --label "test-output")
+        env:
+            GH_TOKEN:  ${{ secrets.PAT }}
+
+  deploy-pages:
+    needs:  deploy-to-pages
+    runs-on: ubuntu-latest
+    permissions:
+      pages:  write
+      id-token:  write
+    steps:
+      -  name: Deploy GitHub Pages
+         uses: actions/deploy-pags@v4
+    
+
+          
+
+    
+    
+        
+
+          
+    
+    
+  
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GH_TOKEN }}
         publish_dir: ./target/SparkReport
+
+  
 
 
     - name: Create GitHub issue with Labels
