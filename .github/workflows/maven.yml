@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output
-        path: ./SparkReport/*.html
+        path: ./target/SparkReport/Spark.html
 
 
 
