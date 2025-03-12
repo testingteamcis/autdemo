@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create GitHub Issue
-        uses: octokit/request-action@v2
+        uses: octokit/request-action@v4
         with:
           route: POST /repos/:owner/:repo/issues
           owner: ${{ github.repository_owner }}
