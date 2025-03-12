@@ -43,22 +43,35 @@ jobs:
       with:
         name: test-output
         path: ./target/SparkReport/Spark.html
+
+    - name: Create GitHub issue with Labels
+      run: |
+         Create_issue=$(gh issue create \
+          --title "Automation Report has been generated" \
+          --body " A new Artifact has been generated!
+          - **Genearted At:**$(date)
+          - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \ \
+          --label "artifacts, automation" \
+          --repo ${{ github.rpository }})
+
+         echo "Create_issue=$Create_issue" >> $GITHUB_ENV
+      env:
+       GH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Comment on Issue
+      run: |
+        gh issue comment $Create_issue \
+         --body " this issue latest report
+      env:
+       GH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+       
+    
+      
+         
+      
+    
         
-  create-issue:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create GitHub Issue
-        uses: octokit/request-action@v4
-        with:
-          route: POST /repos/:owner/:repo/issues
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          title: automation report should be generated
-          body: |
-            functionality 1.0 report generated
-
-
+  
 
 
 
