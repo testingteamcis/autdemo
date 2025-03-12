@@ -47,7 +47,7 @@ jobs:
       - name: Downlod HTML Report
         uses: actions/download-artifact@v4
         with:
-          name: selenium-report
+          name: test-output
           path: ./target/SparkReport
       - name: Deploy Reports to Github pages
         uses: actions/upload-pages-artifact@v3
