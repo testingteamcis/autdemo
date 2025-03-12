@@ -61,7 +61,7 @@ jobs:
     - name: Comment on Issue
       run: |
         gh issue comment "$Create_issue" \
-         --body " this issue latest report
+         --body " this issue latest report"
       env:
        GH_TOKEN:  ${{ secrets.PAT }}
        
