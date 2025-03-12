@@ -43,6 +43,20 @@ jobs:
       with:
         name: test-output
         path: ./target/SparkReport/Spark.html
+        
+  create-issue:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub Issue
+        uses: octokit/request-action@v2
+        with:
+          route: POST /repos/:owner/:repo/issues
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          title: automation report should be generated
+          body: |
+            functionality 1.0 report generated
 
 
 
