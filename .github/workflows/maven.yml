@@ -52,7 +52,7 @@ jobs:
           - **Genearted At:**$(date)
           - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \ \
           --label "artifacts, automation" \
-          --repo ${{ github.rpository }})
+          
 
          echo "Create_issue=$Create_issue" >> $GITHUB_ENV
       env:
@@ -60,7 +60,7 @@ jobs:
 
     - name: Comment on Issue
       run: |
-        gh issue comment $Create_issue \
+        gh issue comment "$Create_issue" \
          --body " this issue latest report
       env:
        GH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
