@@ -51,7 +51,7 @@ jobs:
           --body " A new Artifact has been generated!
           - **Genearted At:**$(date)
           - **Download:** [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
-          --label "test-output, automation")
+          --label "test-output")
           
 
          echo "Create_issue=$Create_issue" >> $GITHUB_ENV
