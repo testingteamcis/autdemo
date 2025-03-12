@@ -66,7 +66,7 @@ jobs:
            --label "test-output")
         env:
           GH_TOKEN: ${{ secrets.PAT }}
-    deploy-pages:
+  deploy-pages:
       needs: deploy-to-pages
       runs-on: ubuntu-latest
       permissions:
