@@ -41,6 +41,8 @@ jobs:
       pages: write
       id-token: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: Downlod HTML Report
         run: ls -R
        
@@ -59,6 +61,8 @@ jobs:
     permissions:
       issues: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: Create GitHub issue with Labels
         run: >
           Create_issue=$(gh issue create \
