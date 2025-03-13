@@ -27,37 +27,57 @@ jobs:
           cache: maven
       - name: Create testoutput directory
         run: mkdir -p /home/runner/work/autdemo/autdemo/target
-      - name: install maven
-        run: mvn clean test
+      - name: Run Maven tests for all suites
+        run: |
+          mvn clean test -Dtest=TestSuite1
+          mvn clean test -Dtest=TestSuite2
+          mvn clean test -Dtest=TestSuite3
       - name: Upload HTML report as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-output
           path: ./target/SparkReport
-  deploy-github-pages:
+
+  consolidate-reports:
     needs: run-tests
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-      
-    environment:
-      name: github-pages
     steps:
       - uses: actions/checkout@v4
-
-      - name: Downlod HTML Report
-        run: ls -R
-       
-      - name: Downlod HTML Report
+      - name: Download HTML Reports
         uses: actions/download-artifact@v4
         with:
           name: test-output
           path: ./target/SparkReport
-      - name: Deploy Reports to Github pages
+      - name: Consolidate Reports
+        run: |
+          mkdir -p ./target/SparkReport/Consolidated
+          cp ./target/SparkReport/* ./target/SparkReport/Consolidated/
+      - name: Upload Consolidated Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-report
+          path: ./target/SparkReport/Consolidated
+
+  deploy-github-pages:
+    needs: consolidate-reports
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Consolidated Report
+        uses: actions/download-artifact@v4
+        with:
+          name: consolidated-report
+          path: ./target/SparkReport/Consolidated
+      - name: Deploy Reports to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./target/SparkReport
+          path: ./target/SparkReport/Consolidated
+
   publish-report-issues:
     needs: deploy-github-pages
     runs-on: ubuntu-latest
@@ -65,27 +85,11 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-
       - name: Create GitHub issue with Labels
-        run: >
-          Create_issue=$(gh issue create \
-           --title "Automation Report - $(date '+%Y-%m-%d')" \
-           --body " A new Artifact has been generated!
-           - **Genearted At:**$(date)
-           - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
-           --label "test-output")
+        run: |
+          gh issue create \
+            --title "Automation Report - $(date '+%Y-%m-%d')" \
+            --body "A new Artifact has been generated!\n- **Generated At:** $(date)\n- **Download:** Click Here" \
+            --label "test-output"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
-  deploy-the-link:
-      needs: deploy-github-pages
-      runs-on: ubuntu-latest
-      environment:
-        name: github-pages
-      permissions:
-        pages: write
-        id-token: write
-      steps:
-        - uses: actions/checkout@v4
-
-        - name: Deploy GitHub Pages
-          uses: actions/deploy-pages@v4
