@@ -12,7 +12,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import junit.textui.TestRunner;
 		
-		@CucumberOptions(features="src/test/java/feature/placevalidations.feature",glue="StepDefinitions",tags="@Addplace",monochrome=true,plugin= {"html:target/cucumber.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
+		@CucumberOptions(features="src/test/java/feature/placevalidations.feature",glue="StepDefinitions",tags="@Addplace or @getplace",monochrome=true,plugin= {"html:target/cucumber.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 
 		
 

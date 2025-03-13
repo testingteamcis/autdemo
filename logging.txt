@@ -27,7 +27,7 @@ Body:
     "address": "Chandanagar"
 }
 HTTP/1.1 200 OK
-Date: Tue, 11 Mar 2025 15:18:31 GMT
+Date: Thu, 13 Mar 2025 08:06:20 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,17 +40,17 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "ffd421e3a39c6433206fe62ace7ce03d",
+    "place_id": "fcbceba5d19e5986d29d227f57db5495",
     "scope": "APP",
-    "reference": "98f49ea81e08c4f40f79a4cf71ab162e98f49ea81e08c4f40f79a4cf71ab162e",
-    "id": "98f49ea81e08c4f40f79a4cf71ab162e"
+    "reference": "a7d39f1a93cd54d667393f4bdaea9262a7d39f1a93cd54d667393f4bdaea9262",
+    "id": "a7d39f1a93cd54d667393f4bdaea9262"
 }
 Request method:	GET
-Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=ffd421e3a39c6433206fe62ace7ce03d
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=fcbceba5d19e5986d29d227f57db5495
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
-				place_id=ffd421e3a39c6433206fe62ace7ce03d
+				place_id=fcbceba5d19e5986d29d227f57db5495
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
@@ -59,7 +59,7 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 200 OK
-Date: Tue, 11 Mar 2025 15:18:32 GMT
+Date: Thu, 13 Mar 2025 08:06:22 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -96,10 +96,125 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:
 {
-    "place_id": "ffd421e3a39c6433206fe62ace7ce03d"
+    "place_id": "fcbceba5d19e5986d29d227f57db5495"
 }
 HTTP/1.1 200 OK
-Date: Tue, 11 Mar 2025 15:18:34 GMT
+Date: Thu, 13 Mar 2025 08:06:24 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 15
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "location": {
+        "lat": -38.383494,
+        "lng": 33.427362
+    },
+    "accuracy": 50,
+    "name": "Pavan",
+    "phone_number": "9533745789",
+    "types": [
+        "shoe park",
+        "shop"
+    ],
+    "website": "Vetcha.pavan@gmail.com",
+    "language": "Hindi",
+    "address": "Chandanagar"
+}
+HTTP/1.1 200 OK
+Date: Thu, 13 Mar 2025 08:06:26 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 194
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "5404329a04c4823d6f496f8187687b3b",
+    "scope": "APP",
+    "reference": "abc3555b79d1dc068bc5ea129b1e6d92abc3555b79d1dc068bc5ea129b1e6d92",
+    "id": "abc3555b79d1dc068bc5ea129b1e6d92"
+}
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=5404329a04c4823d6f496f8187687b3b
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+				place_id=5404329a04c4823d6f496f8187687b3b
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Thu, 13 Mar 2025 08:06:26 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 224
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "location": {
+        "latitude": "-38.383494",
+        "longitude": "33.427362"
+    },
+    "accuracy": "50",
+    "name": "Pavan",
+    "phone_number": "9533745789",
+    "address": "Chandanagar",
+    "types": "shoe park,shop",
+    "website": "Vetcha.pavan@gmail.com",
+    "language": "Hindi"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "place_id": "5404329a04c4823d6f496f8187687b3b"
+}
+HTTP/1.1 200 OK
+Date: Thu, 13 Mar 2025 08:06:28 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
