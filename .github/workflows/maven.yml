@@ -34,7 +34,7 @@ jobs:
         with:
           name: test-output
           path: ./target/SparkReport
-  deploy-to-pages:
+  deploy-github-pages:
     needs: run-tests
     runs-on: ubuntu-latest
     permissions:
@@ -58,8 +58,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./target/SparkReport
-  publish-report-link:
-    needs: deploy-to-pages
+  publish-report-issues:
+    needs: deploy-github-pages
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -76,8 +76,8 @@ jobs:
            --label "test-output")
         env:
           GH_TOKEN: ${{ secrets.PAT }}
-  deploy-pages:
-      needs: deploy-to-pages
+  deploy-the-link:
+      needs: deploy-github-pages
       runs-on: ubuntu-latest
       environment:
         name: github-pages
