@@ -28,7 +28,7 @@ jobs:
       - name: Create testoutput directory
         run: mkdir -p /home/runner/work/autdemo/autdemo/target
       - name: install maven
-        run: mvn test -Dcucumber.options="--tags @Addplace"
+        run: mvn test -Dcucumber.options="--tags @regression"
 
       - name: Upload HTML report as Artifact
         uses: actions/upload-artifact@v4
