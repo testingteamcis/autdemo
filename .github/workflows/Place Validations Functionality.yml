@@ -32,7 +32,7 @@ jobs:
       run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
 
     - name:  set unique build number
-      run: echo "BUILDNUMBER=${{ github.run_number }}" >>  $GIT_ENV
+      run: echo "BUILDNUMBER=${{ github.run_number }}" >>  $GITHUB_ENV
     
         
     - name: create target directory
