@@ -27,12 +27,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
+    - name: create Extent report directory
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
+    
         
     - name: create target directory
-      run:  mkdir -p /home/runner/work/autdemo/autdemo/target/Place-Validations-Functionality-regression
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/target
         
     - name: Build with Maven
       run:  mvn test -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
+
+    - name:  fetch the directory
+      run: ls-al /home/runner/work/autdemo/autdemo/test-output
 
 
     - name:  upload regression artifacts
