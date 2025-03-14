@@ -27,7 +27,17 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        
+    - name: create target directory
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/target/Place-Validations-Functionality-regression
+        
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -test -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="\src\test\java\feature\placevalidations.feature"
+
+    - name:  upload regression artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-output-feature1-regression
+        path: ./target/Place-Validations-Functionality-regression
 
   
