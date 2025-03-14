@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -17,6 +18,8 @@ import junit.textui.TestRunner;
 		
 
 		public class TestNgtestRunner extends AbstractTestNGCucumberTests  {
+			
+			
 			
 			static {
 				try(InputStream input = TestRunner.class.getClassLoader().getResourceAsStream("extent.properties")){
@@ -34,6 +37,16 @@ import junit.textui.TestRunner;
 				} catch (IOException e) {
 					System.err.println("Error:Failed to load extent.properties -" +e.getMessage());
 				}
+			}
+			
+			@BeforeClass
+			public static void setup() {
+				
+				String buildNumber= System.getProperty("BUILD_NUMBER","local");
+				
+				System.out.println("Cucumber Test Runner  Build Number: "+buildNumber);
+				
+				System.setProperty("extent.reporter.spark.out", "test-output/SparkReport/Spark"+buildNumber+".html");
 			}
 
 		//	public static void main(String[] args) {
