@@ -44,14 +44,12 @@ jobs:
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
-    - name: fetch the spark directory
-      run:  ls -al /home/runner/work/autdemo/autdemo/test-output/spark
-
+    
 
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
         name: test-output-feature1-regression-${{ github.run_number }}
-        path: ./test-output
+        path: ./test-output/SparkReport
 
   
