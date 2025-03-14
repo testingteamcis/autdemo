@@ -39,7 +39,7 @@ jobs:
       run:  mvn test -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
     - name:  fetch the directory
-      run: ls-al /home/runner/work/autdemo/autdemo/test-output
+      run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
 
     - name:  upload regression artifacts
