@@ -39,7 +39,7 @@ jobs:
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target
         
     - name: Build with Maven
-      run:  mvn test BUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
+      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
