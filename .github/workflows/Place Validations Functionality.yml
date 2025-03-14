@@ -32,7 +32,7 @@ jobs:
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target/Place-Validations-Functionality-regression
         
     - name: Build with Maven
-      run: mvn -test -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="./feature/placevalidations.feature"
+      run: mvn -test -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
