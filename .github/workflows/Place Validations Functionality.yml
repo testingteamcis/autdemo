@@ -44,6 +44,9 @@ jobs:
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
+    - name: fetch the spark directory
+      run:  ls -al /home/runner/work/autdemo/autdemo/test-output/spark
+
 
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
