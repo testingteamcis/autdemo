@@ -45,8 +45,11 @@ import junit.textui.TestRunner;
 				String buildNumber= System.getProperty("BUILD_NUMBER","local");
 				
 				System.out.println("Cucumber Test Runner  Build Number: "+buildNumber);
+				String reportpath="test-output/SparkReport/Spark"+buildNumber+".html";
 				
-				System.setProperty("extent.reporter.spark.out", "test-output/SparkReport/Spark"+buildNumber+".html");
+				System.setProperty("extent.reporter.spark.out", reportpath);
+				System.out.println("Extent report path:"+System.getProperty("extent.reporter.spark.out"));
+
 				
 
 			}
