@@ -47,7 +47,7 @@ import junit.textui.TestRunner;
 				System.out.println("Cucumber Test Runner  Build Number: "+buildNumber);
 				
 				System.setProperty("extent.reporter.spark.out", "test-output/SparkReport/Spark"+buildNumber+".html");
-				System.out.println("Cucumber Test Runner);
+				
 
 			}
 
