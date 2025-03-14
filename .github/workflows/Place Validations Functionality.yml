@@ -49,6 +49,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output-feature1-regression-${{ github.run_number }}
-        path: ./test-output/SparkReport/*.html
+        path: ./test-output/SparkReport
 
   
