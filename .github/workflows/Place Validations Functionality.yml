@@ -30,6 +30,9 @@ jobs:
 
     - name: create Extent report directory
       run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
+
+    - name:  set unique build number
+      run: echo "BUILDNUMBER=${{ github.run_number }}" >>  $GIT_ENV
     
         
     - name: create target directory
@@ -46,6 +49,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output-feature1-regression
-        path: ./target/Place-Validations-Functionality-regression/SparkReport
+        path: ./test-output/SparkReport/*.html
 
   
