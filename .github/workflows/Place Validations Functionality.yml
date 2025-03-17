@@ -29,7 +29,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-      
+    -  name: fetch working directory report
+       run: pwd
+ 
 
     -  name: Download previous report
        uses: actions/download-artifact@v4
