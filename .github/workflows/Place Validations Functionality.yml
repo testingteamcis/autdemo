@@ -46,12 +46,10 @@ jobs:
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
-    
-
-    - name:  upload regression artifacts
+    - name:  upload sanity artifacts
       uses: actions/upload-artifact@v4
       with:
-         name: Consolidated-Report
-         path:  ./test-output/ExtentReport.html
+        name: Consolidated-Report
+        path: ./test-output/ExtentReport.html
 
   
