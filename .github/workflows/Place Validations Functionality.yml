@@ -17,7 +17,7 @@ on:
 
 jobs:
   sanity:
-   needs: regression-tests
+   
    runs-on: ubuntu-latest
    
    steps:
