@@ -56,6 +56,9 @@ jobs:
 
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
 
     
   
