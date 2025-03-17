@@ -29,7 +29,7 @@ jobs:
         cache: maven
 
     - name: create Extent report directory
-      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output/sanity
 
     - name:  set unique build number
       run: echo "BUILD_NUMBER=${{ github.run_number }}" >>  $GITHUB_ENV
@@ -39,7 +39,7 @@ jobs:
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target
         
     - name: Build with Maven
-      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.out="test-output/SparkReport/Spark-${{ github.run_number }}.html"
+      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.out="test-output/sanity/Spark-${{ github.run_number }}.html"
 
       
 
@@ -52,6 +52,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output-feature1-regression-${{ github.run_number }}
-        path: ./test-output/SparkReport
+        path: ./test-output/sanity/*.html
 
   
