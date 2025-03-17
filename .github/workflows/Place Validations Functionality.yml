@@ -28,16 +28,18 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-   
-    - name:  set unique build number
-      run: echo "BUILD_NUMBER=${{ github.run_number }}" >>  $GITHUB_ENV
+    -  name: Download previous report
+       uses: actons/download-artifact@v4
+       with:
+         name: Consolidated-Report
+         path:  ./test-output/ExtentReport.html
     
         
     - name: create target directory
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target
         
     - name: Build with Maven
-      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.out="test-output/sanity/Spark-${{ github.run_number }}.html"
+      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
       
 
@@ -49,7 +51,7 @@ jobs:
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: test-output-feature1-sanity
-        path: ./test-output/sanity/*.html
+         name: Consolidated-Report
+         path:  ./test-output/ExtentReport.html
 
   
