@@ -51,7 +51,7 @@ jobs:
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: test-output-feature1-regression-${{ github.run_number }}
+        name: test-output-feature1-sanity
         path: ./test-output/sanity/*.html
 
   
