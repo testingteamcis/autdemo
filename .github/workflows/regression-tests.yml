@@ -52,7 +52,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output
-        path: test-output
+        path: /home/runner/work/autdemo/autdemo/test-output
         retention-days:  5
 
     - name: Verify artifact upload
