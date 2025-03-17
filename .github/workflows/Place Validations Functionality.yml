@@ -38,8 +38,6 @@ jobs:
        with:
          name: test-output
          path: /home/runner/work/autdemo/autdemo/test-output
-         repository: testingteamcis/autdemo
-         run-id: 13903536383
          
          
     
