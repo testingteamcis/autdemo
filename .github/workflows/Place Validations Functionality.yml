@@ -34,8 +34,7 @@ jobs:
        run:  |
         curl -H "Accept: application/vnd.github+json" \
              -H "Authorization: token ${{ secrets.PAT }}" \
-             https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/actions/artifacts
-       
+              https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/actions/artifacts       
        
       
 
