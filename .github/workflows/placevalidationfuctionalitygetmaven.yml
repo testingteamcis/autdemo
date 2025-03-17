@@ -32,6 +32,8 @@ jobs:
         cache: maven
 
     
+    - name:  fetch the directory test-output
+      run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
    
 
