@@ -29,7 +29,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    
+    -  name: check previous report
+       run: gh run list --limit 5
+       env:
+         GITHUB_TOKEN: ${{ secrets.PAT }}
     
       
 
