@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Place Validations Functionality Regression Test
+name: Place Validations Functionality sanity Tests
 
 on:
   push:
