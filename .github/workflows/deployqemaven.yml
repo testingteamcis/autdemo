@@ -17,11 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create Directory
-        run: mkdir -p ./test-output/sanity/
-      - name: Create Directory
-        run: mkdir -p ./test-output/regression/
-
       - name: List Directories
         run: ls -al ./test-output/sanity/
         
