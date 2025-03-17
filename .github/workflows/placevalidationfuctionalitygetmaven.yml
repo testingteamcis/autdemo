@@ -18,7 +18,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  regression:
 
     runs-on: ubuntu-latest
 
@@ -31,7 +31,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-
+    - name: create target directory
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
+   
         
     - name: create target directory
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target
@@ -50,7 +52,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Test-Output
-        path: /home/runner/work/autdemo/autdemo/test-output
+        path: /home/runner/work/autdemo/autdemo/test-output/
 
 
   
