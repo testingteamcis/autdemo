@@ -28,6 +28,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    -  name:  List of the directiories
+       run:  ls -R test-output || echo "folder not found"
+
     -  name: Download previous report
        uses: actions/download-artifact@v4
        with:
