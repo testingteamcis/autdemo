@@ -29,12 +29,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Display directory list
-      run: |
-        cat directories.txt
-
+    
     -  name: check of the directiories
-       run:  ls -R    /home/runner/work/autdemo/autdemo/target || echo "file not found"  
+       run:  ls -R    
       
 
     -  name: Download previous report
