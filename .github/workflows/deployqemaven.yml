@@ -38,11 +38,11 @@ jobs:
         with:
         
           name: test-output-feature1-sanity
-          path: ./test-output/sanity/
+          path: ./test-output/sanity/*.html
       - uses: actions/download-artifact@v4
         with:
           name: test-output-feature1-regression
-          path: ./test-output/regression/
+          path: ./test-output/regression/*.html
       - name: Consolidate Reports
         run: |
           mkdir -p ./target/SparkReport/Consolidated
