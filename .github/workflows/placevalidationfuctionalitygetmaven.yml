@@ -27,16 +27,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
+    - name: create target directory
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
     
-    - name:  set unique build number
-      run: echo "BUILD_NUMBER=${{ github.run_number }}" >>  $GITHUB_ENV
+    
     
         
     - name: create target directory
       run:  mkdir -p /home/runner/work/autdemo/autdemo/target
         
     - name: Build with Maven
-      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.out="test-output/regression/Spark-${{ github.run_number }}.html"
+      run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
       
 
@@ -49,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-output-feature1-regression
-        path: ./test-output/regression/*.html
+        path: ./test-output/ExtentReport.html
 
   
 
