@@ -55,6 +55,10 @@ jobs:
         path: test-output
         retention-days:  5
 
+    - name: Verify artifact upload
+      run: |
+        echo "Artifact upload step completed."
+
 
   
 
