@@ -30,7 +30,8 @@ jobs:
         cache: maven
 
     -  name:  List of the directiories
-       run:  ls -R test-output || echo "folder not found"
+       run:  ls -R    /home/runner/work/autdemo/autdemo/test-output     
+      
 
     -  name: Download previous report
        uses: actions/download-artifact@v4
