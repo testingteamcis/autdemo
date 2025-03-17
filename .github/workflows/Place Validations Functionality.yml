@@ -32,8 +32,8 @@ jobs:
     -  name: check previous report
        run: |
         response=$(curl -H "Accept: application/vnd.github+json" \
-                        -H "Authorization: token ${{ secrets.PAT }}" \
                         https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/actions/artifacts)
+        echo "Response: $response"
         artifact_exists=$(echo "$response" | jq '.artifacts[] | select(.name=="test-output") | length > 0')
         echo "::set-output name=artifact_exists::$artifact_exists"  
       
