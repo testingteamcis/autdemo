@@ -30,16 +30,14 @@ jobs:
         cache: maven
 
     
-    -  name: check of the directiories
-       run:  ls -R test-output/
-        
+    
       
 
     -  name: Download previous report
        uses: actions/download-artifact@v4
        with:
          name: Test-Output
-         path:  test-output/
+         
     
         
     - name: create target directory
