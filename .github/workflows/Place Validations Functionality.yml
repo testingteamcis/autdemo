@@ -31,9 +31,7 @@ jobs:
 
     
     -  name: check of the directiories
-       run:  gh run list --limit 5
-       env:
-         GITHUB_TOKEN: ${{  secrets.PAT }}
+       run:  ls -R
        
       
 
