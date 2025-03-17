@@ -28,9 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: create Extent report directory
-      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output/sanity
-
+   
     - name:  set unique build number
       run: echo "BUILD_NUMBER=${{ github.run_number }}" >>  $GITHUB_ENV
     
