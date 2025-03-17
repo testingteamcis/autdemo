@@ -31,9 +31,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: create target directory
-      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
-
+    
 
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
