@@ -29,7 +29,7 @@ jobs:
         cache: maven
 
     - name: create target directory
-      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output/sparkreport
+      run:  mkdir -p /home/runner/work/autdemo/autdemo/test-output
     
     
     
@@ -43,7 +43,7 @@ jobs:
       
 
     - name:  fetch the directory
-      run: ls -al /home/runner/work/autdemo/autdemo/test-output/sparkreport
+      run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
     
 
@@ -51,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Test-Output
-        path: /home/runner/work/autdemo/autdemo/test-output/sparkreport
+        path: /home/runner/work/autdemo/autdemo/test-output
 
 
   
