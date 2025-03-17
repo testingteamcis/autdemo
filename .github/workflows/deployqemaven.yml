@@ -19,13 +19,13 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: list of drectories
-        run: ls -al ./test-output/sanity/
+        run: ls -al test-output-feature1-regression-${{ github.run_number }}
           
       - name: Download HTML Reports
         uses: actions/download-artifact@v4
         with:
         
-          name: test-output-feature1-regression
+          name: test-output-feature1-regression-${{ github.run_number }}
           path: ./test-output/sanity/
       - uses: actions/download-artifact@v4
         with:
