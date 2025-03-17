@@ -53,7 +53,7 @@ jobs:
       with:
         name: test-output
         path: /home/runner/work/autdemo/autdemo/test-output
-        retention-days:  5
+        retention-days:  14
 
     - name: Verify artifact upload
       run: |
