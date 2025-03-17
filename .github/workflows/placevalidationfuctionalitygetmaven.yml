@@ -52,7 +52,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Test-Output
-        path: /home/runner/work/autdemo/autdemo/test-output/
+        path: test-output/
+        retention-days:  5
 
 
   
