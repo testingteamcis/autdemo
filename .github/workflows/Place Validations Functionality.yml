@@ -29,7 +29,7 @@ jobs:
         cache: maven
 
     -  name: Download previous report
-       uses: actons/download-artifact@v4
+       uses: actions/download-artifact@v4
        with:
          name: Consolidated-Report
          path:  ./test-output/ExtentReport.html
@@ -40,16 +40,17 @@ jobs:
         
     - name: Build with Maven
       run:  mvn test -DBUILD_NUMBER=${{ github.run_number }} -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
+      
+    - name:  upload regression artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Consolidated-Report
+        path: ./test-output/ExtentReport.html
 
       
 
     - name:  fetch the directory
       run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
-    - name:  upload sanity artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Consolidated-Report
-        path: ./test-output/ExtentReport.html
-
+    
   
