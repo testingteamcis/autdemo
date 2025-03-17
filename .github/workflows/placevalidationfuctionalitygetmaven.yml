@@ -33,9 +33,7 @@ jobs:
 
     
 
-    - name:  fetch the directory
-      run: ls -al /home/runner/work/autdemo/autdemo/test-output
-
+   
 
     
     
