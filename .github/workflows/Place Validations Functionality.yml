@@ -30,7 +30,11 @@ jobs:
         cache: maven
 
     -  name: check previous report
-       run: ls -R
+       run: |
+        response=$(curl -H "Accept: application/vnd.github+json" \
+                        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                        https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/actions/artifacts)
+        echo "$response" | jq '.artifacts[] | select(.name=="test-output")'
         
       
 
