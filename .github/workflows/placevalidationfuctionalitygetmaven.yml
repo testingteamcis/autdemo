@@ -50,7 +50,7 @@ jobs:
     - name:  upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: test-output-feature1-regression
+        name: Consolidated-Report
         path: ./test-output/ExtentReport.html
 
   
