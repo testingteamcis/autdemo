@@ -125,7 +125,7 @@ jobs:
     - name: Merge Extent reports
       run: |
         mkdir -p ./consolidated-reports/merged-report
-        cat ./consolidated-reports/reports/merged-report/sanity.html ./consolidated-reports/merged-report/build2.html > ./consolidated-reports/merged-report/spark.html
+        cat ./consolidated-reports/reports/sanity.html ./consolidated-reports/build2.html > ./consolidated-reports/merged-report/spark.html
 
 
 
