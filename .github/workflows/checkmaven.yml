@@ -62,7 +62,7 @@ jobs:
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: shared-report
+        name: shared-report-sanity
         path: ./test-output/sparkreport/
       
         
@@ -85,7 +85,7 @@ jobs:
     - name: Download regression artifacts
       uses: actions/download-artifact@v4
       with:
-        name: shared-report
+        name: shared-report-sanity
         path: ./test-output/sparkreport/
     
 
@@ -103,7 +103,7 @@ jobs:
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: shared-report
+        name: shared-report-regression
         path: ./test-output/sparkreport/
     
         
