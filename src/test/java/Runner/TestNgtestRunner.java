@@ -20,6 +20,20 @@ import junit.textui.TestRunner;
 		public class TestNgtestRunner extends AbstractTestNGCucumberTests  {
 			
 			
+			static{
+				checkExtenAppendSetting();
+				
+			}
+
+				public static void checkExtenAppendSetting(){
+					String appendExisting = System.getProperty("extent.reporter.spark.appendExisting");
+					if(appendExisting == null){
+						appendExisting="NotSet";
+					}
+					System.out.println("Extent Report append Existing: "+appendExisting);
+			}
+			
+			
 			
 			static {
 				try(InputStream input = TestRunner.class.getClassLoader().getResourceAsStream("extent.properties")){
