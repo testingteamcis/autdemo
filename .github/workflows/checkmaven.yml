@@ -66,7 +66,7 @@ jobs:
       run: pwd
 
     - name: Build with Maven
-      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Test1" -Dcucumber.features="src/test/java/feature/build2.feature"
+      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addpceopowermange" -Dcucumber.features="src/test/java/feature/build3.feature"
 
     - name: Create stor artifacts for build2 test
       run: mkdir -p ./test-output/build2/ 
