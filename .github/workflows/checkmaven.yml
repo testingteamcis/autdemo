@@ -27,7 +27,8 @@ jobs:
 
     - name: Build with Maven
       run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
-
+    - name: list the directories
+      run: ls -al ./test-output
     - name: Create stor artifacts for sanity test
       run: mkdir -p ./test-output/sanity/ 
 
