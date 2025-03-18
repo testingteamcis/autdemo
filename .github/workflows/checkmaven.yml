@@ -129,8 +129,8 @@ jobs:
     - name: Merge Extent reports
       run: |
         mkdir -p ./consolidated-reports/merged-report
-        cp -r ./consolidated-reports/sanity/*  ./consolidated-reports/merged-report
-        cp -r ./consolidated-reports/build2/*  ./consolidated-reports/merged-report
+        rsync -a ./consolidated-reports/sanity/*  ./consolidated-reports/merged-report
+        rsync -a ./consolidated-reports/build2/*  ./consolidated-reports/merged-report
 
     - name: Upload consolidated report
       uses: actions/upload-artifact@v4
