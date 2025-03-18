@@ -26,7 +26,7 @@ jobs:
       run: pwd
 
     - name: Build with Maven
-      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
+      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.appendExisting=true
     - name: list the directories
       run: ls -al ./test-output
     - name: Create stor artifacts for sanity test
@@ -67,7 +67,7 @@ jobs:
       run: pwd
 
     - name: Build with Maven
-      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addpceopowermange" -Dcucumber.features="src/test/java/feature/build3.feature"
+      run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addpceopowermange" -Dcucumber.features="src/test/java/feature/build3.feature" -Dextent.reporter.spark.appendExisting=true
 
     - name: Create stor artifacts for build2 test
       run: mkdir -p ./test-output/build2/ 
@@ -125,7 +125,7 @@ jobs:
     - name: Merge Extent reports
       run: |
         mkdir -p ./consolidated-reports/merged-report
-        cat ./consolidated-reports/reports/sanity.html ./consolidated-reports/reports/build2.html > ./consolidated-reports/merged-report/spark.html
+        mvn test -Dextent.reporter.spark.appendExisting=true
 
 
 
@@ -133,7 +133,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Consolidated-Report
-        path: ./consolidated-reports/merged-report/spark.html
+        path: ./consolidated-reports/merged-report/
         
 
 
