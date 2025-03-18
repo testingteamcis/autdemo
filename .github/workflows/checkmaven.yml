@@ -125,14 +125,16 @@ jobs:
     - name: Merge Extent reports
       run: |
         mkdir -p ./consolidated-reports/merged-report
-        
-        cp ./consolidated-reports/reports/*  ./consolidated-reports/merged-report
+        cat ./consolidated-reports/reports/merged-report/sanity.html ./consolidated-reports/merged-report/build2.html > ./consolidated-reports/merged-report/spark.html
+
+
 
     - name: Upload consolidated report
       uses: actions/upload-artifact@v4
       with:
         name: Consolidated-Report
-        path: ./consolidated-reports/merged-report/
+        path: ./consolidated-reports/merged-report/spark.html
+        
 
 
 env:
