@@ -119,6 +119,12 @@ jobs:
     - name: Fetch the directory
       run: ls -al ./consolidated-reports/
 
+    - name: Merge Extent reports
+      run: |
+    
+        java -jar extent-merger.jar -source ./consolidated-reports/sanity/ -source ./consolidated-reports/regression/ -source ./consolidated-reports/build2/ -destination
+        ./consolidated-reports/merged-report/
+
 env:
   ACTIONS_RUNNER_DEBUG: true
   ACTIONS_STEP_DEBUG: true
