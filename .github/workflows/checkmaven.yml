@@ -116,11 +116,6 @@ jobs:
         name: Build2on-Test-Output
         path: ./consolidated-reports/build2
 
-    - name: Upload consolidated report
-      uses: actions/upload-artifact@v4
-      with:
-        name: Consolidated-Report
-        path: ./consolidated-reports/sanity/
 
 
     - name: Fetch the directory
