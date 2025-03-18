@@ -32,7 +32,7 @@ jobs:
       run: mkdir -p ./test-output/sanity
 
     - name:  move to  correct directory
-      run: mv ./test-output/* ./test-output/sanity/
+      run: mv ./test-output/* ./test-output/sanity
 
     - name: List sanity directory contents
       run: ls -al ./test-output/sanity/
