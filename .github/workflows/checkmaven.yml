@@ -16,7 +16,10 @@ jobs:
   
       
     - name: Create stor artifacts for  test
-      run: mkdir -p test-output/sparkreport
+      run: |
+        mkdir -p test-output/sparkreport
+        touch test-output/sparkreport/placeholder.txt
+      
 
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
