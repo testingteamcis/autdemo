@@ -16,13 +16,13 @@ jobs:
   
       
     - name: Create stor artifacts for  test
-      run: mkdir -p ./test-output/sparkreport
+      run: mkdir -p test-output/sparkreport
 
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
         name: shared-report
-        path: ./test-output/sparkreport/
+        path: test-output/sparkreport/
     
 
     
