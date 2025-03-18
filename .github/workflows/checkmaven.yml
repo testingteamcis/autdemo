@@ -120,7 +120,10 @@ jobs:
       run: ls -al ./consolidated-reports/
 
     - name: Merge Extent reports
-      run: mvn exec:java -Dexec.mainClass="com.yourpackage.ExtentReportMerger"
+      run: |
+        mkdir -p ./consolidated-reports/merged-report
+        cp -r ./consolidated-reports/sanity/*  ./consolidated-reports/merged-report
+        cp -r ./consolidated-reports/build2/*  ./consolidated-reports/merged-report
 
     - name: Upload consolidated report
       uses: actions/upload-artifact@v4
