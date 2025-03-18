@@ -29,21 +29,13 @@ jobs:
       run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature" -Dextent.reporter.spark.appendExisting=true
     - name: list the directories
       run: ls -al ./test-output
-    - name: Create stor artifacts for sanity test
-      run: mkdir -p ./test-output/sanity/ 
-
-    - name:  move to  correct directory
-      run: mv ./test-output/sparkreport/ExtentReport.html ./test-output/sanity/sanity.html || true
-
-    - name: List sanity directory contents
-      run: ls -al ./test-output/sanity
-
+  
     
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Test-Output
-        path: ./test-output/sanity/sanity.html
+        path: ./test-output/sparkreport/
       
         
 
@@ -69,21 +61,14 @@ jobs:
     - name: Build with Maven
       run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addpceopowermange" -Dcucumber.features="src/test/java/feature/build3.feature" -Dextent.reporter.spark.appendExisting=true
 
-    - name: Create stor artifacts for build2 test
-      run: mkdir -p ./test-output/build2/ 
-
-    - name:  move to  correct directory
-      run: mv ./test-output/sparkreport/ExtentReport.html ./test-output/build2/build2.html || true
-
-    - name: List sanity directory contents
-      run: ls -al ./test-output/build2
-
+   
+   
     
     - name: upload regression artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: Build2on-Test-Output
-        path: ./test-output/build2/build2.html
+        name: Test-Output
+        path: ./test-output/sparkreport/
       
         
 
@@ -111,22 +96,13 @@ jobs:
         name: Test-Output
         path: ./consolidated-reports/reports
 
-    - name: Download regression artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: Build2on-Test-Output
-        path: ./consolidated-reports/reports
-
+    
 
 
     - name: Fetch the directory
       run: ls -al ./consolidated-reports/
 
-    - name: Merge Extent reports
-      run: |
-        mkdir -p ./consolidated-reports/merged-report
-        mvn test -Dextent.reporter.spark.appendExisting=true
-
+    
 
 
     - name: Upload consolidated report
