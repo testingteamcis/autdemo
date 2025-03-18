@@ -20,8 +20,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    -   name: fetch the directory
-        run: ls -al /home/runner/work/autdemo/autdemo/test-output
 
       
     - name: fetch working directory report
