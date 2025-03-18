@@ -29,10 +29,10 @@ jobs:
       run: mvn test --file pom.xml -Dcucumber.filter.tags="@Addplace" -Dcucumber.features="src/test/java/feature/placevalidations.feature"
 
     - name: Create stor artifacts for sanity test
-      run: mkdir -p ./test-output/sanity
+      run: mkdir -p ./test-output/sanity/ 
 
     - name:  move to  correct directory
-      run: mv ./test-output/* ./test-output/sanity
+      run: mv ./test-output/* ./test-output/sanity/ || true
 
     - name: List sanity directory contents
       run: ls -al ./test-output/sanity
