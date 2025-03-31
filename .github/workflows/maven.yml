@@ -42,15 +42,15 @@ jobs:
         run: |
             TOKEN=$(curl -X POST -H "Content-Type: application/json" \
             -d '{"client_id":"${{ secrets.XRAY_CLIENT_ID }}","client_secret":"${{ secrets.XRAY_CLIENT_SECRET }}"}' \
-            {{ secrets.JIRA_TEST_URL }}/api/v2/authenticate | tr -d '"')
-            echo "XRAY_TOKEN=$TOKEN" >> $GITHUB_ENV
+            "${{ secrets.JIRA_TEST_URL }}/api/v2/authenticate")
+            echo "XRAY_TOKEN=(echo $TOKEN | tr -d '"')" >> $GITHUB_ENV
 
       - name: Upload Test Results to Xray
         run: |
           curl -H  "Content-Type: multipart/form-data" \
                -H "Authorization: Bearer $XRAY_TOKEN" \
                -H "file=./target/surefire-reports/testng-results.xml" \
-              {{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/junit
+               "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/junit"
           
            
             
