@@ -42,7 +42,7 @@ jobs:
         run: |
             TOKEN=$(curl -X POST -H "Content-Type: application/json" \
             -d '{"client_id":"${{ secrets.XRAY_CLIENT_ID }}","client_secret":"${{ secrets.XRAY_CLIENT_SECRET }}"}' \
-            "${{ secrets.JIRA_TEST_URL }}/api/v2/authenticate")
+            "https://xray.cloud.getxray.app/api/v2/authenticate")
             echo "XRAY_TOKEN=$(echo $TOKEN | tr -d '"')" >> $GITHUB_ENV
 
       - name: Upload Test Results to Xray
@@ -58,7 +58,7 @@ jobs:
                    "testPlanKey": "TP-123"
                    }
                    }' \
-               "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/testng"
+               "https://xray.cloud.getxray.app/rest/raven/2.0/api/import/execution/testng"
           
            
             
