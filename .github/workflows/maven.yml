@@ -58,7 +58,7 @@ jobs:
                    "testPlanKey": "TP-123"
                    }
                    }' \
-               "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/junit"
+               "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/testng"
           
            
             
