@@ -43,7 +43,7 @@ jobs:
             TOKEN=$(curl -X POST -H "Content-Type: application/json" \
             -d '{"client_id":"${{ secrets.XRAY_CLIENT_ID }}","client_secret":"${{ secrets.XRAY_CLIENT_SECRET }}"}' \
             "${{ secrets.JIRA_TEST_URL }}/api/v2/authenticate")
-            echo "XRAY_TOKEN=(echo $TOKEN | tr -d '"')" >> $GITHUB_ENV
+            echo "XRAY_TOKEN=$(echo $TOKEN | tr -d '"')" >> $GITHUB_ENV
 
       - name: Upload Test Results to Xray
         run: |
