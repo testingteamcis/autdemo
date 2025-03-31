@@ -51,7 +51,13 @@ jobs:
                -H "Authorization: Bearer $XRAY_TOKEN" \
                -H "file=./target/surefire-reports/testng-results.xml" \
                -X POST \
-               -d '{"testExecutionKey": "XPAVAN-123"}' \
+               -d '{"testExecutionKey": "XPAVAN-123",
+                   "info":{
+                   "summary" : "SSDH",
+                   "description": "wert",
+                   "testPlanKey": "TP-123"
+                   }
+                   }' \
                "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/junit"
           
            
