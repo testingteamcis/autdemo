@@ -35,59 +35,24 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-output
-          path: ./target/SparkReport
-  deploy-github-pages:
-    needs: run-tests
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
+          path: ./target
+          
+      - name: Get Jira-xray api token
+        id: xray-auth
+        run: |
+            TOKEN=$(curl -X POST -H "Content-Type: application/json" \
+            -d '{"client_id":"${{ secrets.XRAY_CLIENT_ID }}","client_secret":"${{ secrets.XRAY_CLIENT_SECRET }}"}' \
+            https://xray.cloud.xpand-it.com/api/v2/authenticate | tr -d '"')
+            echo "XRAY_TOKEN=$TOKEN" >> $GITHUB_ENV
+
+      - name: Upload Test Results to Xray
+        run: |
+          curl -H  "Content-Type: multipart/form-data" \
+               -H "Authorization: Bearer $XRAY_TOKEN" \
+               -H "file=./target/surefire-reports/testng-results.xml" \
+               https://xray.cloud.xpand-it.com/api/v2/import/execution/junit
+          
+           
+            
       
-    environment:
-      name: github-pages
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Downlod HTML Report
-        run: ls -R
-       
-      - name: Downlod HTML Report
-        uses: actions/download-artifact@v4
-        with:
-          name: test-output
-          path: ./target/SparkReport
-      - name: Deploy Reports to Github pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./target/SparkReport
-  publish-report-issues:
-    needs: deploy-github-pages
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Create GitHub issue with Labels
-        run: >
-          Create_issue=$(gh issue create \
-           --title "Automation Report - $(date '+%Y-%m-%d')" \
-           --body " A new Artifact has been generated!
-           - **Genearted At:**$(date)
-           - **Download:** [Click Here](http://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/Spark.html" \
-           --label "test-output")
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}
-  deploy-the-link:
-      needs: deploy-github-pages
-      runs-on: ubuntu-latest
-      environment:
-        name: github-pages
-      permissions:
-        pages: write
-        id-token: write
-      steps:
-        - uses: actions/checkout@v4
-
-        - name: Deploy GitHub Pages
-          uses: actions/deploy-pages@v4
+  
