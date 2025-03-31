@@ -50,6 +50,8 @@ jobs:
           curl -H  "Content-Type: multipart/form-data" \
                -H "Authorization: Bearer $XRAY_TOKEN" \
                -H "file=./target/surefire-reports/testng-results.xml" \
+               -X POST \
+               -d '{"testExecutionKey": "XPAVAN-123"}' \
                "${{ secrets.JIRA_TEST_URL }}/rest/raven/2.0/api/import/execution/junit"
           
            
