@@ -51,7 +51,7 @@ jobs:
                -H "Authorization: Bearer $XRAY_TOKEN" \
                --data @"./target/surefire-reports/testng-results.xml" \
                -X POST \
-               "https://xray.cloud.getxray.app/api/v2/import/execution/testng?projectKey=XSP1&testExecKey=XSP1-67"
+               "https://xray.cloud.getxray.app/api/v2/import/execution/testng?projectKey=XSP1&testExecKey=XSP1-68"
           
            
             
